@@ -10,9 +10,10 @@ import random
 
 punct_chars = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
 
+goodbyes = ["bye", "goodbye", "shut up", "exit"]
+
 conj_dict = {"are":"am", "am":"are", "were":"was", "was":"were", "you":"I", "i":"you",
              "your":"my", "my":"your", "ive":" you've", "youve":"I've", "im":"you're", "youre":"I'm", "me":"you"}
-
 
 keyword_list = ["can you", "can i", "you are", "youre", "i dont", "i feel", "why dont you", "why cant i", "are you",
              "i cant", "i am", "im ", "you ", "i want", "what", "how", "who", "where", "when", "why", "name", "cause",
@@ -24,6 +25,11 @@ def list_to_string(some_list:list):
     re_strung = " "
     return re_strung.join(some_list)
 
+def check_goodbye(sentence: str):
+    for word in goodbyes:
+        if word in sentence:
+            print("Goodbye!")
+            exit(1)
 
 def preprocess(sentence:str):
     new_sentence = sentence.lower()
@@ -195,6 +201,7 @@ def eliza():
         sentence = input("> ")
         sentence = preprocess(sentence)
         #print("pre-process: " + sentence)
+        check_goodbye(sentence)
         sentence = keywords(sentence)
         #print("keyword: " + sentence)
         sentence = conjugate(sentence)
