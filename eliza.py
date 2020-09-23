@@ -38,13 +38,34 @@ def preprocess(sentence:str):
 
 # some screwery here. returns broken rh_sentences
 def keywords(sentence):
+
+    two_words = [0,1,2,4,5,8,9,10,13]
+    three_words = [6,7]
+
     for word in keyword_list:
         if word in sentence:
-            #index = sentence.find(word)
-            index = keyword_list.index(word)
-            new_sentence = str(index)+" "+sentence[index:]
-            return new_sentence
+            keyword_index = keyword_list.index(word)
+            start_index = sentence.find(word)
 
+            if(keyword_index in three_words):
+                upto_index = start_index + 3
+            elif(keyword_index in two_words ):
+                upto_index = start_index + 2
+            else:
+                upto_index = start_index + 1
+
+            print(upto_index)
+            new_sentence = str(keyword_index) + " " + sentence[upto_index:]
+            return new_sentence
+"""
+    for word in keyword_list:
+        if word in sentence:
+            sentence_index = sentence.find(word)
+            keyword_index = keyword_list.index(word)
+            new_sentence = str(keyword_index)+" "+sentence[:sentence_index]
+            #new_sentence = str(keyword_index)+" "+sentence[sentence_index:]
+            return new_sentence
+"""
 
 
 def conjugate(sentence):
