@@ -28,7 +28,7 @@ class Eliza:
 
         self.mood_boosters = ["rubber duck", "funk", "computers", "akira"]
 
-        self.mood_dampers = ["mayonnaise", "cardi b", "roommates"]
+        self.mood_dampers = ["mayonnaise", "cardi b"]
 
 
     def eliza(self):
@@ -99,8 +99,8 @@ class Eliza:
 
     def getreply(self, rep_num: int, mood:int):
         neutral_reply_list = []
-        positive_reply_list = ["I diagnose you with coolguy syndrome"]
-        negative_reply_list = ["I think it's time to end our session...", "You do realize that I'm paid by the hour, correct?"]
+        positive_reply_list = ["I diagnose you with coolguy syndrome", ]
+        negative_reply_list = ["I think it's time to end our session...", "You do realize that I'm paid by the hour, correct?", "No wonder you're here..."]
         reply = ""
 
         def helper(mood):
